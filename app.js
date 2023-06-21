@@ -26,10 +26,28 @@ addBookToLibrary(hobbit);
 addBookToLibrary(neuromancer);
 addBookToLibrary(bladerunner);
 
-console.log(myLibrary);
+const form = document.getElementById('book-form');
+form.style.display = 'none';
+
+const addBookBtn = document.querySelector('.beautiful-button');
+
+const displayInput = function(e) {
+  form.style.display = 'block';
+  addBookBtn.style.display = 'none';
+  
+};
 
 
+const submit = document.querySelector('.submit');
 
+const addNewBook = function(e) {
+  form.style.display = 'none';
+  addBookBtn.style.display = "block";
+};
+
+addBookBtn.addEventListener('click', displayInput);
+
+submit.addEventListener('click', addNewBook);
 
 
 const displayBooks = function() {
