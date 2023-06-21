@@ -40,11 +40,6 @@ const displayInput = function(e) {
   
 };
 
-const clearBookForm = function() {
-
-}
-
-
 const submit = document.querySelector('.submitBtn');
 
 const addNewBook = function(e) {
@@ -54,7 +49,7 @@ const addNewBook = function(e) {
   let title = document.getElementById("title").value;
   let author = document.getElementById('author').value;
   let pages = document.getElementById('pages').value;
-  let haveRead = document.getElementById('haveRead');
+  let haveRead = document.getElementById('haveRead').value;
   let id = myLibrary.length + 1;
   const newBook = new Book(title, author, pages, haveRead, id);
   addBookToLibrary(newBook);
@@ -67,6 +62,11 @@ const addNewBook = function(e) {
 addBookBtn.addEventListener('click', displayInput);
 
 submit.addEventListener('click', addNewBook);
+
+
+
+
+
 
 
 const displayBooks = function() {
@@ -109,11 +109,12 @@ const displayBooks = function() {
         e.stopImmediatePropagation();
         myLibrary.map((item) => {
           if(item.id === book.id) {
+
+            console.log(myLibrary.indexOf(item));
             const a = myLibrary.indexOf(item);
-            const b = a + 1;
+            const b = myLibrary.indexOf(item) + 1;
             myLibrary.splice(a, b);
             displayBooks();
-            console.log(myLibrary.indexOf(item));
           }
         })
       })
