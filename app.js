@@ -90,10 +90,15 @@ const displayBooks = function() {
     } else {
       readBook.textContent = 'Have Read? No';
     }
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.setAttribute('class', 'deleteBtn');
+    deleteBtn.textContent = 'Delete';
     card.appendChild(bookHeader);
     card.appendChild(bookAuthor);
     card.appendChild(bookLength);
     card.appendChild(readBook);
+    card.appendChild(deleteBtn);
     bookshelf.appendChild(card);
 
 
