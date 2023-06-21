@@ -27,3 +27,15 @@ addBookToLibrary(neuromancer);
 addBookToLibrary(bladerunner);
 
 console.log(myLibrary);
+
+const bookshelf = document.querySelector('.bookshelf');
+const card = document.createElement('div');
+card.setAttribute('class', 'card');
+card.textContent = 'Hello Bitches!'
+bookshelf.appendChild(card);
+
+const displayBooks = function(myLibrary) {
+  return myLibrary.map((book) => {
+
+  })
+}
