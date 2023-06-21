@@ -26,6 +26,8 @@ addBookToLibrary(hobbit);
 addBookToLibrary(neuromancer);
 addBookToLibrary(bladerunner);
 
+const bookshelf = document.querySelector('.bookshelf');
+
 const form = document.getElementById('book-form');
 form.style.display = 'none';
 
@@ -41,6 +43,15 @@ const displayInput = function(e) {
 const submit = document.querySelector('.submit');
 
 const addNewBook = function(e) {
+  e.preventDefault();
+  const title = document.getElementById("title").value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  const haveRead = document.getElementById('haveRead');
+  const newBook = new Book(title, author, pages, haveRead);
+  addBookToLibrary(newBook);
+  bookshelf.innerHTML = '';
+  displayBooks();
   form.style.display = 'none';
   addBookBtn.style.display = "block";
 };
@@ -51,7 +62,6 @@ submit.addEventListener('click', addNewBook);
 
 
 const displayBooks = function() {
-  const bookshelf = document.querySelector('.bookshelf');
   
   myLibrary.map((book) => {
     const card = document.createElement('div');
