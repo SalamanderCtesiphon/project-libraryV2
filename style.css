@@ -44,7 +44,7 @@ main {
 
 .card {
   width: 190px;
-  height: 254px;
+  height: 300px;
   border-radius: 30px;
   background: lightgrey;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
@@ -65,6 +65,7 @@ main {
 }
 
 .beautiful-button {
+  margin: 1em;
   position: relative;
   display: inline-block;
   background: linear-gradient(to bottom, #1b1c3f, #4a4e91);
@@ -125,6 +126,12 @@ main {
     background-position: right bottom;
   }
 }
+
+.deleteBtn {
+  padding: 1em;
+}
+
+
 
 .form {
   background-color: #15172b;
