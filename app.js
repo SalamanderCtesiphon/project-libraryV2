@@ -1,3 +1,6 @@
+const currentYear = document.querySelector('.year');
+currentYear.textContent = new Date().getFullYear();
+
 let myLibrary = [];
 
 function Book(title, author, numberOfPages, haveRead) {
