@@ -3,17 +3,18 @@ currentYear.textContent = new Date().getFullYear();
 
 let myLibrary = [];
 
-function Book(title, author, numberOfPages, haveRead) {
+function Book(title, author, numberOfPages, haveRead, id) {
   //the constructor
   this.title = title;
   this.author = author;
   this.numberOfPages = numberOfPages;
   this.haveRead = haveRead;
+  this.id = id;
 }
 
-const hobbit = new Book('The Hobbit', 'J.R.R. Tolkein', 295, true);
-const neuromancer = new Book('Neuromancer', 'William Gibson', 271, true);
-const bladerunner = new Book('Bladerunner', 'Philip K. Dick', 230, true);
+const hobbit = new Book('The Hobbit', 'J.R.R. Tolkein', 295, true, 1);
+const neuromancer = new Book('Neuromancer', 'William Gibson', 271, true, 2);
+const bladerunner = new Book('Bladerunner', 'Philip K. Dick', 230, true, 3);
 
 
 
@@ -54,9 +55,9 @@ const addNewBook = function(e) {
   let author = document.getElementById('author').value;
   let pages = document.getElementById('pages').value;
   let haveRead = document.getElementById('haveRead');
-  const newBook = new Book(title, author, pages, haveRead);
+  let id = myLibrary.length + 1;
+  const newBook = new Book(title, author, pages, haveRead, id);
   addBookToLibrary(newBook);
-  bookshelf.innerHTML = '';
   displayBooks();
   form.reset();
   form.style.display = 'none';
@@ -70,6 +71,7 @@ submit.addEventListener('click', addNewBook);
 
 const displayBooks = function() {
   
+  bookshelf.innerHTML = '';
   myLibrary.map((book) => {
     const card = document.createElement('div');
     card.setAttribute('class', 'card');
@@ -83,7 +85,6 @@ const displayBooks = function() {
     const bookLength = document.createElement('p');
     bookLength.textContent = `Number of Pages: ${book.numberOfPages}`;
     bookLength.setAttribute('class', 'num')
-
     const readBook = document.createElement('p');
     if(book.haveRead){
       readBook.textContent = 'Have Read? Yes';
@@ -100,6 +101,23 @@ const displayBooks = function() {
     card.appendChild(readBook);
     card.appendChild(deleteBtn);
     bookshelf.appendChild(card);
+
+    const buttons = document.querySelectorAll('.deleteBtn');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', (e) => {
+        e.stopImmediatePropagation();
+        myLibrary.map((item) => {
+          if(item.id === book.id) {
+            const a = myLibrary.indexOf(item);
+            const b = a + 1;
+            myLibrary.splice(a, b);
+            displayBooks();
+            console.log(myLibrary.indexOf(item));
+          }
+        })
+      })
+    })
 
 
 
