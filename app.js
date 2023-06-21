@@ -28,7 +28,7 @@ addBookToLibrary(bladerunner);
 
 const bookshelf = document.querySelector('.bookshelf');
 
-const form = document.getElementById('book-form');
+const form = document.getElementById('bookForm');
 form.style.display = 'none';
 
 const addBookBtn = document.querySelector('.beautiful-button');
@@ -39,19 +39,26 @@ const displayInput = function(e) {
   
 };
 
+const clearBookForm = function() {
 
-const submit = document.querySelector('.submit');
+}
+
+
+const submit = document.querySelector('.submitBtn');
 
 const addNewBook = function(e) {
   e.preventDefault();
-  const title = document.getElementById("title").value;
-  const author = document.getElementById('author').value;
-  const pages = document.getElementById('pages').value;
-  const haveRead = document.getElementById('haveRead');
+
+
+  let title = document.getElementById("title").value;
+  let author = document.getElementById('author').value;
+  let pages = document.getElementById('pages').value;
+  let haveRead = document.getElementById('haveRead');
   const newBook = new Book(title, author, pages, haveRead);
   addBookToLibrary(newBook);
   bookshelf.innerHTML = '';
   displayBooks();
+  form.reset();
   form.style.display = 'none';
   addBookBtn.style.display = "block";
 };
