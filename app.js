@@ -11,16 +11,15 @@ function Book(title, author, numberOfPages, haveRead, id) {
   this.haveRead = haveRead;
   this.id = id;
   this.toggleRead = function() {
-    if(haveRead === true) {
-      this.haveRead = false;
-    } else if(haveRead === false) {
-      this.haveRead = true;
+    if(this.haveRead === false) {
+      return this.haveRead = true;
+    } else {
+      return this.haveRead = false;
     }
-    return haveRead;
-  }
+  };
 }
 
-const hobbit = new Book('The Hobbit', 'J.R.R. Tolkein', 295, true, 1);
+const hobbit = new Book('The Hobbit', 'J.R.R. Tolkein', 295, false, 1);
 const neuromancer = new Book('Neuromancer', 'William Gibson', 271, true, 2);
 const bladerunner = new Book('Bladerunner', 'Philip K. Dick', 230, true, 3);
 
@@ -53,11 +52,17 @@ const submit = document.querySelector('.submitBtn');
 const addNewBook = function(e) {
   e.preventDefault();
 
-
+  let haveRead;
   let title = document.getElementById("title").value;
   let author = document.getElementById('author').value;
   let pages = document.getElementById('pages').value;
-  let haveRead = document.getElementById('haveRead').value;
+  let readStatus = document.getElementById('haveRead').value;
+  if(readStatus === 'yes' || readStatus === 'Yes') {
+    haveRead = true;
+  } else if (readStatus === 'no' || readStatus === 'No') {
+    haveRead = false;
+
+  }
   let id = myLibrary.length + 1;
   const newBook = new Book(title, author, pages, haveRead, id);
   addBookToLibrary(newBook);
@@ -139,9 +144,9 @@ const displayBooks = function() {
         e.stopImmediatePropagation();
         myLibrary.map((item) => {
           if(item.id === book.id) {
+            
             item.toggleRead();
             displayBooks();
-            console.log(item.id);
           }
         })
       })
