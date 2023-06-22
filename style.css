@@ -2,7 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
+  font-family: "Segoe UI", sans-serif;
 }
 
 
@@ -43,8 +44,8 @@ main {
 }
 
 .card {
-  width: 190px;
-  height: 300px;
+  width: 240px;
+  height: 320px;
   border-radius: 30px;
   background: lightgrey;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
@@ -52,6 +53,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  text-align: left;
   padding: 1em;
   margin: .5em;
 }
@@ -126,12 +128,6 @@ main {
     background-position: right bottom;
   }
 }
-
-.deleteBtn {
-  padding: 1em;
-}
-
-
 
 .form {
   background-color: #15172b;
@@ -258,4 +254,20 @@ footer span {
 footer span a {
   text-decoration: none;
   color: inherit;
+}
+
+.btnBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.deleteBtn ,.toggleButton {
+  padding: .25em .65em;
+  margin: 2em .5em;
+  color: whitesmoke;
+  border-radius: 30px;
+  background: linear-gradient(to bottom, #1b1c3f, #4a4e91);
+
+  font-family: "Segoe UI", sans-serif;
 }
