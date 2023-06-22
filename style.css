@@ -35,7 +35,9 @@ main {
   height: auto;
   padding: 5em;
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
+  flex-wrap: wrap
 }
 
 .bookshelf {
