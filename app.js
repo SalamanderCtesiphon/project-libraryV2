@@ -10,6 +10,14 @@ function Book(title, author, numberOfPages, haveRead, id) {
   this.numberOfPages = numberOfPages;
   this.haveRead = haveRead;
   this.id = id;
+  this.toggleRead = function() {
+    if(haveRead === true) {
+      this.haveRead = false;
+    } else if(haveRead === false) {
+      this.haveRead = true;
+    }
+    return haveRead;
+  }
 }
 
 const hobbit = new Book('The Hobbit', 'J.R.R. Tolkein', 295, true, 1);
@@ -92,13 +100,19 @@ const displayBooks = function() {
       readBook.textContent = 'Have Read? No';
     }
 
+    const toggleBtn = document.createElement('button');
+    toggleBtn.textContent = 'toggle read';
+    toggleBtn.setAttribute('class', 'toggleButton');
+
     const deleteBtn = document.createElement('button');
     deleteBtn.setAttribute('class', 'deleteBtn');
     deleteBtn.textContent = 'Delete';
+    
     card.appendChild(bookHeader);
     card.appendChild(bookAuthor);
     card.appendChild(bookLength);
     card.appendChild(readBook);
+    card.appendChild(toggleBtn);
     card.appendChild(deleteBtn);
     bookshelf.appendChild(card);
 
@@ -109,12 +123,25 @@ const displayBooks = function() {
         e.stopImmediatePropagation();
         myLibrary.map((item) => {
           if(item.id === book.id) {
-
-            console.log(myLibrary.indexOf(item));
             const a = myLibrary.indexOf(item);
             const b = 1;
             myLibrary.splice(a, b);
             displayBooks();
+          }
+        })
+      })
+    })
+
+    const toggleButtons = document.querySelectorAll('.toggleButton');
+
+    toggleButtons.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopImmediatePropagation();
+        myLibrary.map((item) => {
+          if(item.id === book.id) {
+            item.toggleRead();
+            displayBooks();
+            console.log(item.id);
           }
         })
       })
