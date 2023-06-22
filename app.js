@@ -1,6 +1,12 @@
 const currentYear = document.querySelector('.year');
 currentYear.textContent = new Date().getFullYear();
 
+
+
+const hobbit = new Book('The Hobbit', 'J.R.R. Tolkein', 295, false, 1);
+const neuromancer = new Book('Neuromancer', 'William Gibson', 271, true, 2);
+const bladerunner = new Book('Bladerunner', 'Philip K. Dick', 230, true, 3);
+
 let myLibrary = [];
 
 function Book(title, author, numberOfPages, haveRead, id) {
@@ -18,12 +24,6 @@ function Book(title, author, numberOfPages, haveRead, id) {
     }
   };
 }
-
-const hobbit = new Book('The Hobbit', 'J.R.R. Tolkein', 295, false, 1);
-const neuromancer = new Book('Neuromancer', 'William Gibson', 271, true, 2);
-const bladerunner = new Book('Bladerunner', 'Philip K. Dick', 230, true, 3);
-
-
 
 function addBookToLibrary(book) {
   //do stuff here
@@ -43,8 +43,7 @@ const addBookBtn = document.querySelector('.beautiful-button');
 
 const displayInput = function(e) {
   form.style.display = 'block';
-  addBookBtn.style.display = 'none';
-  
+  addBookBtn.style.display = 'none'; 
 };
 
 const submit = document.querySelector('.submitBtn');
@@ -61,8 +60,8 @@ const addNewBook = function(e) {
     haveRead = true;
   } else if (readStatus === 'no' || readStatus === 'No') {
     haveRead = false;
-
   }
+
   let id = myLibrary.length + 1;
   const newBook = new Book(title, author, pages, haveRead, id);
   addBookToLibrary(newBook);
@@ -75,12 +74,6 @@ const addNewBook = function(e) {
 addBookBtn.addEventListener('click', displayInput);
 
 submit.addEventListener('click', addNewBook);
-
-
-
-
-
-
 
 const displayBooks = function() {
   
