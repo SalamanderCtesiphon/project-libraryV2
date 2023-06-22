@@ -105,13 +105,17 @@ const displayBooks = function() {
     const deleteBtn = document.createElement('button');
     deleteBtn.setAttribute('class', 'deleteBtn');
     deleteBtn.textContent = 'Delete';
+
+    const btnBox = document.createElement('div');
+    btnBox.setAttribute('class', 'btnBox');
+    btnBox.appendChild(deleteBtn);
+    btnBox.appendChild(toggleBtn);
     
     card.appendChild(bookHeader);
     card.appendChild(bookAuthor);
     card.appendChild(bookLength);
     card.appendChild(readBook);
-    card.appendChild(toggleBtn);
-    card.appendChild(deleteBtn);
+    card.appendChild(btnBox);
     bookshelf.appendChild(card);
 
     const buttons = document.querySelectorAll('.deleteBtn');
