@@ -112,7 +112,7 @@ const displayBooks = function() {
 
             console.log(myLibrary.indexOf(item));
             const a = myLibrary.indexOf(item);
-            const b = myLibrary.indexOf(item) + 1;
+            const b = 1;
             myLibrary.splice(a, b);
             displayBooks();
           }
